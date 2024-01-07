@@ -10,8 +10,8 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <HBox prefHeight="0.0" prefWidth="200.0">
-        <Button mnemonicParsing="false" text="Generate" onAction="#onGenerateClick"/>
-        <TextField fx:id="txtRandomGenerated" prefWidth="120.0" promptText="Generate random number" disable="true"/>
+        <Button mnemonicParsing="false" onAction="#onGenerateClick" text="Generate" />
+        <TextField fx:id="txtRandomGenerated" disable="true" editable="false" opacity="0.0" prefWidth="120.0" promptText="Generate random number" />
     </HBox>
 
           <Label fx:id="lblInput" text="Enter a number">
@@ -20,5 +20,9 @@
       </font>
    </Label>
      <TextField fx:id="txtRandomGuess" />
-    <Button onAction="#onClickStart" text="Start" />
+    <Button onAction="#onGuessClick" text="Start Guess" />
+    <TextFlow>
+        <Label text="Number of guesses remaining :" />
+        <Label fx:id="lblGuessesRemaining" />
+    </TextFlow>
 </VBox>
