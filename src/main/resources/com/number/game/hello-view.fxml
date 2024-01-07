@@ -5,24 +5,52 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.number.game.MainController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-    <HBox prefHeight="0.0" prefWidth="200.0">
-        <Button mnemonicParsing="false" onAction="#onGenerateClick" text="Generate" />
-        <TextField fx:id="txtRandomGenerated" disable="true" editable="false" opacity="0.0" prefWidth="120.0" promptText="Generate random number" />
-    </HBox>
-
-          <Label fx:id="lblInput" text="Enter a number">
-      <font>
-         <Font name="System Bold" size="12.0" />
-      </font>
-   </Label>
-     <TextField fx:id="txtRandomGuess" />
-    <Button onAction="#onGuessClick" text="Start Guess" />
-    <TextFlow>
-        <Label text="Number of guesses remaining :" />
-        <Label fx:id="lblGuessesRemaining" />
-    </TextFlow>
-</VBox>
+<HBox prefHeight="293.0" prefWidth="393.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.number.game.MainController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="439.0" prefWidth="216.0" spacing="20.0">
+          <padding>
+              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+          </padding>
+           <Button fx:id="btnGenerate" mnemonicParsing="false" onAction="#onGenerateClick" text="Generate" />
+      
+                <Label fx:id="lblInput" text="Enter a number">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Label>
+           <TextField fx:id="txtRandomGuess">
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+         </TextField>
+         <Separator disable="true" />
+          <Button fx:id="btnStartGuess" onAction="#onGuessClick" text="Start Guess" />
+          <TextFlow>
+              <Label text="Number of guesses remaining :">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+              <Label fx:id="lblGuessesRemaining" />
+          </TextFlow>
+           <TextField fx:id="txtRandomGenerated" disable="true" editable="false" opacity="0.0" prefHeight="25.0" prefWidth="0.0" />
+      </VBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+       <VBox prefHeight="439.0" prefWidth="171.0">
+         <Label text="Score">
+            <VBox.margin>
+               <Insets left="50.0" />
+            </VBox.margin>
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+           <Button alignment="CENTER" mnemonicParsing="false" onAction="#onNewRoundClick" text="Start new round">
+              <VBox.margin>
+                  <Insets left="25.0" />
+              </VBox.margin>
+           </Button>
+           <ListView fx:id="lvScore" editable="true" />
+       </VBox>
+   </children>
+</HBox>
