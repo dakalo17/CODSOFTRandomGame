@@ -45,11 +45,10 @@
                <Font size="20.0" />
             </font>
          </Label>
-           <Button alignment="CENTER" mnemonicParsing="false" onAction="#onNewRoundClick" text="Start new round">
-              <VBox.margin>
-                  <Insets left="25.0" />
-              </VBox.margin>
-           </Button>
+           <HBox>
+               <Button alignment="CENTER" mnemonicParsing="false" onAction="#onNewRoundClick" text="New round" fx:id="btnNewRound"/>
+               <Button mnemonicParsing="false" onAction="#onEndGameClick" text="End Game" fx:id="btnEndGame"/>
+           </HBox>
            <ListView fx:id="lvScore" editable="true" />
        </VBox>
    </children>
