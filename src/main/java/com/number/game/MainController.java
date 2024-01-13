@@ -16,7 +16,6 @@ import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
 import java.util.*;
-import java.util.function.Consumer;
 
 public class MainController implements Initializable {
 
@@ -39,7 +38,6 @@ public class MainController implements Initializable {
 
     private ObservableList<String> scoresList;
     private Random random;
-    private int guessedNumber;
     private int guessesRemaining;
 
 
@@ -123,9 +121,20 @@ public class MainController implements Initializable {
     }
 
     private void newRound() {
-        if(!btnGenerate.isDisabled()){
+        if (roundCheck(true)) return;
+
+
+        btnGenerate.setDisable(false);
+        btnStartGuess.setDisable(false);
+        guessesRemaining = 10;
+        lblGuessesRemaining.setText("10");
+        roundCount++;
+    }
+
+    private boolean roundCheck(boolean btnGenerateState) {
+        if(!btnGenerate.isDisabled() && btnGenerateState){
             CustomDialog.show("Round","You must at least do something before doing another round. ");
-            return;
+            return true;
         }
 
         //implying that the player did not win the current round
@@ -139,17 +148,13 @@ public class MainController implements Initializable {
         }
         txtRandomGuess.clear();
         txtRandomGenerated.clear();
-
-
-        btnGenerate.setDisable(false);
-        btnStartGuess.setDisable(false);
-        guessesRemaining = 10;
-        lblGuessesRemaining.setText("10");
-        roundCount++;
+        return false;
     }
 
     @FXML
     protected void onEndGameClick(ActionEvent event) {
+        if(roundCheck(false))return;
+
         if(scores == null || scores.isEmpty()){
             CustomDialog.show("End Game","You must at least play 1 round of the game.");
             return;
